@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>devfinder — github developer lookup</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <h1 class="title">devfinder</h1>
+    </div>
+    <p class="tagline">Look up any GitHub account by username — profile, stats, and repositories, pulled live from GitHub's public API.</p>
+
+    <form class="search" id="searchForm">
+      <span class="prompt-sym" aria-hidden="true">~$</span>
+      <input
+        type="text"
+        id="usernameInput"
+        placeholder="enter a github username"
+        autocomplete="off"
+        spellcheck="false"
+        aria-label="GitHub username"
+      >
+      <button type="submit">find</button>
+    </form>
+
+    <div class="examples">
+      <span class="lbl">try:</span>
+      <button type="button" class="chip" data-user="torvalds">torvalds</button>
+      <button type="button" class="chip" data-user="gaearon">gaearon</button>
+      <button type="button" class="chip" data-user="sindresorhus">sindresorhus</button>
+      <button type="button" class="chip" data-user="addyosmani">addyosmani</button>
+    </div>
+  </div>
+</header>
+
+<div id="status" role="status" aria-live="polite"></div>
+
+<main id="results">
+  <section class="profile" id="profileSection"></section>
+
+  <div class="langs" id="langsSection" style="display:none;">
+    <h3>Primary languages across public repositories</h3>
+    <div class="langbar" id="langBar"></div>
+    <div class="langlegend" id="langLegend"></div>
+  </div>
+
+  <section class="repos" id="reposSection">
+    <div class="repos-head">
+      <h3>Repositories</h3>
+      <div class="sort-toggle" role="group" aria-label="Sort repositories">
+        <button type="button" data-sort="stars" class="active">most starred</button>
+        <button type="button" data-sort="updated">recently updated</button>
+      </div>
+    </div>
+    <div class="repolist" id="repoList"></div>
+  </section>
+</main>
+
+<footer>
+  Data via the public GitHub REST API. Unauthenticated requests are rate‑limited to 60/hour per IP.
+</footer>
+<script src="index.js"></script>
+</body>
+</html>
